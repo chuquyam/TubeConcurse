@@ -158,8 +158,6 @@ fieldset.grupo .campo {
 
         </fieldset>
 
-
-
         <fieldset class="group">
         <fieldset class="fieldsetBotao">
 
