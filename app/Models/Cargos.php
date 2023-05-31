@@ -5,19 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Disciplinas extends Model
+class Cargos extends Model
 {
-
-    protected $table = 'disciplinas';
+    protected $table = 'cargos';
 
     protected $fillable = [
-        'id',
-        'coddisciplina',
-        'nomedadisciplina',
-        'descricao',
-        'tipo',
-        'link',
+        'nomedocargo',
         'id_nomedoconcurso',
-
     ];
 }

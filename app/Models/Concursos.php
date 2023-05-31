@@ -13,7 +13,7 @@ class concursos extends Model
 
     protected $fillable = [
         'codconcurso',
-        'nomedoconcurso',
+        'id_nomedoconcurso',
         'numerodoedital',
         'nomedoinstituto',
         'nomedocargo',

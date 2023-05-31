@@ -58,7 +58,7 @@
             <tr>
                     <th scope="row">{{$concursos->id}}</th>
                     <td>{{$concursos->codconcurso}}</td>
-                    <td>{{$concursos->nomedoconcurso}}</td>
+                    <td>{{$concursos->id_nomedoconcurso}}</td>
                     <td>{{$concursos->numerodoedital}}</td>
                     <td>{{$concursos->nomedoinstituto}}</td>
                     <td>{{$concursos->nomedocargo}}</td>

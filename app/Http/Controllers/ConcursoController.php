@@ -36,8 +36,8 @@ class ConcursoController extends Controller
 
         $objConcursos = new Concursos;
         $objConcursos -> codconcurso = $request->input('codconcurso');
-        $objConcursos -> nomedoconcurso = $request->input('nomedoconcurso');
-        $objConcursos -> numerodoedital = $request->input('numerodoedital');
+
+        $objConcursos -> id_nomedoconcurso = $request->input('id_nomedoconcurso');
 
         $objConcursos -> numerodoedital = $request->input('numerodoedital');
         $objConcursos -> nomedoinstituto = $request->input('nomedoinstituto');
@@ -63,8 +63,8 @@ class ConcursoController extends Controller
 
         $objConcursos = Concursos::find($id);
         $objConcursos -> codconcurso = $request->input('codconcurso');
-        $objConcursos -> nomedoconcurso = $request->input('nomedoconcurso');
-        $objConcursos -> numerodoedital = $request->input('numerodoedital');
+
+        $objConcursos -> id_nomedoconcurso = $request->input('id_nomedoconcurso');
 
         $objConcursos -> numerodoedital = $request->input('numerodoedital');
         $objConcursos -> nomedoinstituto = $request->input('nomedoinstituto');

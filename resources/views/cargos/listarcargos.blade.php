@@ -25,11 +25,11 @@
 
 <div class="container1">
                     <div class="title" style="text-align: center">
-                        <h1>Lista de Disciplinas Cadastradas</h1>
+                        <h1>Lista de Cargos Cadastrados</h1>
                     </div>
 
                     <div class="text-center mt-3 mb-4">
-                    <a href="{{url("add-disciplina")}}" >
+                    <a href="{{url("add-cargos")}}" >
                         <Button class="btn btn-success">Cadastrar</button>
                     </a>
                     </div>
@@ -39,31 +39,22 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Disciplina</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Link</th>
-                    <th scope="col">Concurso</th>
+                    <th scope="col">Nome do Cargo</th>
+                    <th scope="col">Nome do Concurso</th>
 
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-           @foreach($disciplina as $disciplinas)
+           @foreach($cargos as $cargos)
 
             <tr>
-                    <th scope="row">{{$disciplinas->id}}</th>
-                    <td>{{$disciplinas->coddisciplina}}</td>
-                    <td>{{$disciplinas->nomedadisciplina}}</td>
-                    <td>{{$disciplinas->descricao}}</td>
-                    <td>{{$disciplinas->tipo}}</td>
-                    <td><a href="{{$disciplinas->link}}">{{$disciplinas->link}}</a></td>
-                    <td>{{$disciplinas->id_nomedoconcurso}}</td>
-
+                    <th scope="row">{{$cargos->id}}</th>
+                    <td>{{$cargos->nomedocargo}}</td>
+                    <td>{{$cargos->id_nomedoconcurso}}</td>
                     <td>
 
-                          <a href="">
+                          <a href="{{ url("edit-concurso/$cargos->id")}}">
                           <button class="btn btn-dark">Ver</button>
                           </a>
                           <a href="">
@@ -85,4 +76,3 @@
 </div>
 @endcan
 @endsection
-

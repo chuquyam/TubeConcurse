@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//slider
+//Nome dos concursos
 Route::get('home-slider','App\Http\Controllers\Admin\SliderController@index');
 Route::get('add-slider','App\Http\Controllers\Admin\SliderController@create');
 Route::post('store-slider','App\Http\Controllers\Admin\SliderController@store');
@@ -41,6 +41,17 @@ Route::get('add-disciplina','App\Http\Controllers\DisciplinaController@create');
 Route::post('store-disciplina','App\Http\Controllers\DisciplinaController@store');
 Route::get('edit-disciplina/{id}','App\Http\Controllers\DisciplinaControllerr@edit');
 Route::put('update-disciplina/{id}','App\Http\Controllers\DisciplinasControllerr@update');
+
+//cadastro matrícula
+Route::get('home-matricula','App\Http\Controllers\MatriculaController@index');
+Route::get('add-matricula','App\Http\Controllers\MatriculaController@create');
+Route::post('store-matricula','App\Http\Controllers\MatriculaController@store');
+
+//cadastro de cargo
+
+Route::get('home-cargo','App\Http\Controllers\CargosController@index');
+Route::get('add-cargo','App\Http\Controllers\CargosController@create');
+Route::post('store-cargo','App\Http\Controllers\CargosController@store');
 
 
 

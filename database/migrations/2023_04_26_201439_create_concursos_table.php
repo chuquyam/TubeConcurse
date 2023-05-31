@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('concursos', function (Blueprint $table) {
             $table->id();
             $table->string('codconcurso');
-            $table->string('nomedoconcurso');
+            $table->bigInteger('id_nomedoconcurso')->unsigned();
             $table->string('numerodoedital');
             $table->string('nomedoinstituto');
             $table->string('nomedocargo');
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('datadeinicio');
             $table->date('datafinal');
             $table->string('nomeinterno');
+
+            $table->foreign('id_nomedoconcurso')->references('id')->on('sliders')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

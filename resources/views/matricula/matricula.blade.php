@@ -97,18 +97,14 @@ fieldset.grupo .campo {
         </div>
     @endif
     @can('aluno')
-        Dados do Aluno
-    @elsecan('admin')
+        <div class="container1">
 
-
-<div class="container1">
-
-<form class="formulario" action="{{ url('store-concurso')}}" method="POST">
+<form class="formulario" action="{{ url('store-matricula')}}" method="POST">
 @csrf
 
 
                     <div class="title" style="text-align: center">
-                        <h1>Cadastro de Concurso</h1>
+                        <h1>Matrícula em Concurso</h1>
                     </div>
 
                     <div class="fieldsetbotao">
@@ -118,14 +114,8 @@ fieldset.grupo .campo {
     <fieldset>
         <fieldset class="grupo">
             <div class="campo">
-                <label for="codconcurso">Código do Concurso</label>
-                <input type="text" id="codconcurso" name="codconcurso" style="width: 10em" required >
-            </div>
-
-    <!--select vem da tabela sliders-->
-             <div class="campo">
-                    <label for="id_nomedoconcurso">Selecione o concurso</label>
-                    <select name="id_nomedoconcurso" id="id_nomedoconcurso">
+                    <label for="id_codconcurso">Selecione o concurso</label>
+                    <select name="id_codconcurso" id="id_codconcurso">
                         <?php
 
                             $host= "mysql";
@@ -142,60 +132,72 @@ fieldset.grupo .campo {
                             }
                         ?>
                         <?php
-                            $query = $conn->query("SELECT id, nome FROM sliders order by nome asc");
+                            $query = $conn->query("SELECT id, nomedoconcurso FROM concursos order by nomedoconcurso asc");
                             $registros = $query->fetchAll(PDO::FETCH_ASSOC);
 
                             foreach($registros as $option){
                         ?>
-                            <option value="<?php echo $option['id'] ?>"><?php echo $option['nome'] ?></option>
+                            <option value="<?php echo $option['id'] ?>"><?php echo $option['nomedooncurso'] ?></option>
                         <?php
                         }
                         ?>
                     </select>
-
             </div>
 
             <div class="campo">
-                <label for="numerodoedital">Número do Edital</label>
-                <input type="text" id="numerodoedital" name="numerodoedital" style="width: 10em" required >
-            </div>
+                <label for="id_nomedocargo">Nome do Cargo</label>
+                <select name="id_nomedocargo" id="id_nomedocargo">
+                        <?php
 
-            <div class="campo">
-                <label for="nomedoinstituto">Nome do Instituto</label>
-                <input type="text" id="nomedoinstituto" name="nomedoinstituto" style="width: 20em" required >
-            </div>
+                            $host= "mysql";
+                            $user= "root";
+                            $pass = "root";
+                            $dbname = "tubeconcurso";
+                            $port = 3306;
 
-            <div class="campo">
-                <label for="nomedocargo">Nome do Cargo</label>
-                <input type="text" id="nomedocargo" name="nomedocargo" style="width: 15em" required >
-            </div>
+                        try{
+
+                            $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
+                            } catch(PDOEXception $err){
+                                echo "Erro de conexão".$err->getMessage();
+                            }
+                        ?>
+
+
+                        <?php
+                            $query = $conn->query("SELECT id, nomedoconcurso, nomedocargo FROM concursos  order by nomedocargo asc");
+                            $registros = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+                            foreach($registros as $option){
+
+                        ?>
+                            <option value="<?php echo $option['id'] ?>"><?php echo $option['nomedocargo'] ?></option>
+                        <?php
+                        }
+                        ?>
+                </select>
+                </div>
+
+                <div class="campo">
+                    <label for="valordocurso">Valor do Curso</label>
+                    <input type="text" id="valordocurso" name="valordocurso" value="<?php echo  100.00; ?>" style="width: 10em" >
+                </div>
+
+                <div class="campo">
+                    <label for="idade">Idade</label>
+                    <input type="text" id="idade" name="idade" style="width: 10em" required >
+                </div>
+
+                 <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" style="width: 20em" required >
+                </div>
+
         </fieldset>
 
-        <fieldset class="grupo">
-            <div class="campo">
-                <label for="nomedaorganizadora">Nome da Organizadora</label>
-                <input type="text" id="nomedaorganizadora" name="nomedaorganizadora" style="width: 20em" required >
-            </div>
 
-            <div class="campo">
-                <label for="datadaprova">Data da Prova</label>
-                <input id="datadaprova" type="date" name="datadaprova" style="width: 10em" required>
-            </div>
-
-            <div class="campo">
-                <label for="datadeinicio">Início da Inscrição</label>
-                <input id="datadeinicio" type="date" name="datadeinicio" style="width: 10em" required>
-            </div>
-
-            <div class="campo">
-                <label for="datafinal">Final de Inscrição</label>
-                <input id="datafinal" type="date" name="datafinal" style="width: 10em" required>
-            </div>
-
-            <div class="campo">
-                <label for="nomeinterno">Nome Interno</label>
-                <input id="nomeinterno" type="text" name="nomeinterno" style="width: 20em" required>
-            </div>
         </fieldset>
 
         <fieldset class="group">
@@ -213,5 +215,13 @@ fieldset.grupo .campo {
 </form>
 
 
+    @elsecan('admin')
+
+        Área do Administrador
+
+
 @endcan
+
 @endsection
+
+

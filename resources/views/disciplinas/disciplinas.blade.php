@@ -145,8 +145,8 @@ fieldset.grupo .campo {
 
         <fieldset class="grupo">
             <div class="campo">
-            <label for="id_codconcurso">Selecione o concurso</label>
-            <select name="id_codconcurso" id="id_codconcurso">
+            <label for="id_nomedoconcurso">Selecione o concurso</label>
+            <select name="id_nomedoconcurso" id="id_nomedoconcurso">
                 <?php
                     //criando uma conexão manual para testar slide
                     $host= "mysql";
@@ -165,12 +165,46 @@ fieldset.grupo .campo {
 
 
                 <?php
-                $query = $conn->query("SELECT id, nomedoconcurso FROM concursos order by nomedoconcurso asc");
+                $query = $conn->query("SELECT id, nome FROM sliders order by nome asc");
                 $registros = $query->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach($registros as $option){
                 ?>
-                    <option value="<?php echo $option['id'] ?>"><?php echo $option['nomedoconcurso'] ?></option>
+                    <option value="<?php echo $option['id'] ?>"><?php echo $option['nome'] ?></option>
+                <?php
+                 }
+                ?>
+            </select>
+
+            </div>
+
+ <div class="campo">
+            <label for="">Selecione o cargo</label>
+            <select name="" id="">
+                <?php
+                    //criando uma conexão manual para testar slide
+                    $host= "mysql";
+                    $user= "root";
+                    $pass = "root";
+                    $dbname = "tubeconcurso";
+                    $port = 3306;
+
+                 try{
+
+                    $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
+                    } catch(PDOEXception $err){
+                        echo "Erro de conexão".$err->getMessage();
+                    }
+                ?>
+
+
+                <?php
+                $query = $conn->query("SELECT id, nome FROM cargos order by nome asc");
+                $registros = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach($registros as $option){
+                ?>
+                    <option value="<?php echo $option['id'] ?>"><?php echo $option['nome'] ?></option>
                 <?php
                  }
                 ?>

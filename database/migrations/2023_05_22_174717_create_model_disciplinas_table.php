@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('link');
 
-            $table->bigInteger('id_codconcurso')->unsigned()->nullable();
-            $table->foreign('id_codconcurso')->references('id')->on('concursos')->onUpdate('cascade')->onDelete('cascade');
+            $table->bigInteger('id_nomedoconcurso')->unsigned();
+            $table->foreign('id_nomedoconcurso')->references('id')->on('sliders')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

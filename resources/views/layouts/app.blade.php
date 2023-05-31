@@ -12,6 +12,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -127,7 +129,10 @@
             <footer class="fixar-rodape">
                    <p>  &copy; TubeConcurso - Todos os direitos reservados - 2023</p>
             </footer>
+
          </main>
      </div>
+
+     <script src="{{ asset('js/custom.js')}}"></script>
 </body>
 </html>

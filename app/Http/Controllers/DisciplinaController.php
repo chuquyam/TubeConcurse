@@ -41,7 +41,7 @@ class DisciplinaController extends Controller
 
         $objDisciplina -> tipo = $request->input('tipo');
         $objDisciplina -> link = $request->input('link');
-        $objDisciplina -> id_codconcurso = $request->input('id_codconcurso');
+        $objDisciplina -> id_nomedoconcurso = $request->input('id_nomedoconcurso');
 
         $objDisciplina->save();
         return redirect() ->back()->with('status','disciplina cadastrada com sucesso');

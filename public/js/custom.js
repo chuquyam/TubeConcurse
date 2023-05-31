@@ -1,9 +1,8 @@
-const situacao = document.getElementById*("id_codconcurso");
-if(situacao){
-    listarSituacao();
-}
+let selectCodConcurso = document.getElementById('id_codconcurso');
 
-async function listarSituacao(){
+selectCodConcurso.onchange = () => {
+    let selectNomeDoConcurso = document.getElementById('nomedoconcurso');
 
-    await fetch('listar_situacao.php');
+     selectNomeDoConcurso.innerHTML = "";
+
 }

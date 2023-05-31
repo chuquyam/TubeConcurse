@@ -43,7 +43,7 @@
                                                                 <td>{{ $item -> id }}</td>
                                                                 <td>{{ $item -> nome }}</td>
                                                                 <td>
-                                                                <img src="{{ asset('uploads/slider/'.$item->imagem) }}" width="100" alt="imagem de slider" />
+                                                                <a href=""><img src="{{ asset('uploads/slider/'.$item->imagem) }}" width="100" alt="imagem de slider" /></a>
                                                                 </td>
                                                                 <td>
                                                                     @if($item -> status == '1')
