@@ -2,7 +2,13 @@
 <nav >
 
     <ul>
-
+         <li>
+            <a href="{{url('add-cargo')}}">
+                <i class="fa">
+                    <h4>Cadastrar Cargos</h4>
+                </i>
+            </a>
+        </li>
         <li>
             <a href="{{url('add-concurso')}}">
                 <i class="fa">
@@ -30,6 +36,14 @@
     </ul>
 
      <ul>
+        <li>
+            <a href="{{url('home-cargo')}}">
+                <i class="fa">
+                    <h4>Listar Cargos</h4>
+                </i>
+            </a>
+        </li>
+
 
         <li>
             <a href="{{url('home-concurso')}}">
@@ -49,10 +63,12 @@
         <li>
             <a href="{{url('home-slider')}}">
                 <i class="fa">
-                    <h4>Listar Sliders</h4>
+                    <h4>Listar Nome de Concursos</h4>
                 </i>
             </a>
         </li>
+
+
 
 
     </ul>

@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="text-center mt-3 mb-4">
-                    <a href="{{url("add-cargos")}}" >
+                    <a href="{{url("add-cargo")}}" >
                         <Button class="btn btn-success">Cadastrar</button>
                     </a>
                     </div>
