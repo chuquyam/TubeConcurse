@@ -38,11 +38,11 @@ class MatriculaController extends Controller
     public function store(Request $request)
     {
         $objMatricula = new Matricula;
-        $objMatricula -> id_codconcurso = $request->input('id_codconcurso');
-        $objMatricula -> id_nomedocargo = $request->input('id_nomedocargo');
-        $objMatricula-> valordocurso= $request->input('valordocurso');
-        $objMatricula -> idade = $request->input('idade');
+        $objMatricula -> id_nomedoconcurso = $request->input('id_nomedoconcurso');
         $objMatricula -> email = $request->input('email');
+        $objMatricula-> preco = $request->input('preco');
+        $objMatricula -> idade = $request->input('idade');
+        $objMatricula -> telefone = $request->input('telefone');
 
 
         $objMatricula->save();

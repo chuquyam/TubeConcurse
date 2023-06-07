@@ -26,6 +26,7 @@
 <div class="container1">
                     <div class="title" style="text-align: center">
                         <h1>Lista de Concursos Cadastrados</h1>
+                        <input class="botao1" type="button" value="Voltar" onClick="history.go(-1)">
                     </div>
 
                     <div class="text-center mt-3 mb-4">

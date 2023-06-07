@@ -13,17 +13,13 @@ return new class extends Migration
     {
         Schema::create('matricula', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_codconcurso')->unsigned();
-
-            $table->string('id_nomedocargo');
-            $table->float('valordocurso');
-            $table->integer('idade');
+            $table->bigInteger('id_nomedoconcurso')->unsigned();
             $table->string('email');
-
+            $table->double('preco');
+            $table->integer('idade');
+            $table->string('telefone');
+            $table->foreign('id_nomedoconcurso')->references('id')->on('concursos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('id_codconcurso')->references('id')->on('concursos')->onUpdate('cascade')->onDelete('cascade');
-
         });
     }
 

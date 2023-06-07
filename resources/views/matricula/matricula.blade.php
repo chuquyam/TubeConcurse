@@ -22,7 +22,7 @@ fieldset {
     justify-content: center;
 }
 
- input,  button {
+ input,  button, select {
     font-family: sans-serif;
     font-size: 1em;
     margin-left: 0.5em;
@@ -62,9 +62,24 @@ fieldset.grupo .campo {
     display: block;
 }
 
+.campo select[type="text"],
+ {
+    padding: 0.2em;
+    border: 1px solid #CCC;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
 .campo input:focus  {
     background: #FFC;
 }
+
+.selectOption {
+    background-color: #FFC;
+
+}
+
+
 
 .campo  {
     color: #000;
@@ -91,136 +106,191 @@ fieldset.grupo .campo {
 
 @section('content')
 
-@if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
-    @can('aluno')
-        <div class="container1">
-
-<form class="formulario" action="{{ url('store-matricula')}}" method="POST">
-@csrf
-
-
-                    <div class="title" style="text-align: center">
-                        <h1>Matrícula em Concurso</h1>
+            @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
                     </div>
+            @endif
+            @can('aluno')
+                <div class="container1">
 
-                    <div class="fieldsetbotao">
-                        <img classe="img-responsive" src="../../../build/assets/imagens/logotube.png" alt="TubeConcuso Logo" >
-                    </div>
-
-    <fieldset>
-        <fieldset class="grupo">
-            <div class="campo">
-                    <label for="id_codconcurso">Selecione o concurso</label>
-                    <select name="id_codconcurso" id="id_codconcurso">
-                        <?php
-
-                            $host= "mysql";
-                            $user= "root";
-                            $pass = "root";
-                            $dbname = "tubeconcurso";
-                            $port = 3306;
-
-                        try{
-
-                            $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
-                            } catch(PDOEXception $err){
-                                echo "Erro de conexão".$err->getMessage();
-                            }
-                        ?>
-                        <?php
-                            $query = $conn->query("SELECT id, nomedoconcurso FROM concursos order by nomedoconcurso asc");
-                            $registros = $query->fetchAll(PDO::FETCH_ASSOC);
-
-                            foreach($registros as $option){
-                        ?>
-                            <option value="<?php echo $option['id'] ?>"><?php echo $option['nomedooncurso'] ?></option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-            </div>
-
-            <div class="campo">
-                <label for="id_nomedocargo">Nome do Cargo</label>
-                <select name="id_nomedocargo" id="id_nomedocargo">
-                        <?php
-
-                            $host= "mysql";
-                            $user= "root";
-                            $pass = "root";
-                            $dbname = "tubeconcurso";
-                            $port = 3306;
-
-                        try{
-
-                            $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
-                            } catch(PDOEXception $err){
-                                echo "Erro de conexão".$err->getMessage();
-                            }
-                        ?>
+                    <form class="formulario" action="{{ url('store-matricula')}}" method="POST">
+                    @csrf
 
 
-                        <?php
-                            $query = $conn->query("SELECT id, nomedoconcurso, nomedocargo FROM concursos  order by nomedocargo asc");
-                            $registros = $query->fetchAll(PDO::FETCH_ASSOC);
+                            <div class="title" style="text-align: center">
+                                <h1>Matrícula em Concurso</h1>
+                            </div>
+
+                            <div class="fieldsetbotao">
+                                <img classe="img-responsive" src="../../../build/assets/imagens/logotube.png" alt="TubeConcuso Logo" >
+                            </div>
+
+                        <fieldset>
+                            <fieldset class="grupo">
+                                <div class="campo">
+                                    <label for="id_nomedoconcurso">Selecione um concurso</label>
+                                    <select name="id_nomedoconcurso" id="id_nomedoconcurso">
+                                        <option class="selectOption" value="selecione um concurso"></option>
+                                        <?php
+                                            //criando uma conexão manual para testar slide
+                                            $host= "mysql";
+                                            $user= "root";
+                                            $pass = "root";
+                                            $dbname = "tubeconcurso";
+                                            $port = 3306;
+
+                                        try{
+
+                                            $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
+                                            } catch(PDOEXception $err){
+                                                echo "Erro de conexão".$err->getMessage();
+                                            }
+                                        ?>
+                                        <?php
+                                            $query = $conn->query("SELECT id, nomedocargo, id_nomedoconcurso FROM cargos order by nomedocargo asc");
+                                            $registros = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                                            foreach($registros as $option){
+                                        ?>
+                                            <option class="selectOption" value="<?php echo $option['id'] ?>"><?php echo $option['nomedocargo'] ?></option>
+                                        <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                 <div class="campo">
+                                    <label for="email">Email</label>
+                                    <input type="text" id="email" name="email" style="width: 20em" required>
+                                </div>
+
+                                <div class="campo">
+                                    <label for="preco">Valor do Curso</label>
+                                    <input type="text" id="preco" name="preco" value="<?php echo  50.00; ?>" >
+                                </div>
+
+                                <div class="campo">
+                                    <label for="idade">Idade</label>
+                                    <input type="text" id="idade" name="idade" style="width: 10em" required >
+                                </div>
+
+                                <div class="campo">
+                                    <label for="telefone">Telefone</label>
+                                    <input type="telefone" id="telefone" name="telefone" style="width: 20em" required >
+                                </div>
 
 
+                            </fieldset>
 
-                            foreach($registros as $option){
+                            <fieldset class="group">
+                                <fieldset class="fieldsetBotao">
+                                <div class="campo" >
+                                    <input class="botao1" type="button" value="Voltar" onClick="history.go(-1)">
+                                    <button class="botao1" type="reset">Limpar</button>
+                                    <button class="botao1" type="submit">Cadastrar</button>
+                                </div>
 
-                        ?>
-                            <option value="<?php echo $option['id'] ?>"><?php echo $option['nomedocargo'] ?></option>
-                        <?php
-                        }
-                        ?>
-                </select>
+                                </fieldset>
+
+                            </fieldset>
+                        </fieldset>
+
+                    </form>
+
                 </div>
 
-                <div class="campo">
-                    <label for="valordocurso">Valor do Curso</label>
-                    <input type="text" id="valordocurso" name="valordocurso" value="<?php echo  100.00; ?>" style="width: 10em" >
+        @elsecan('admin')
+
+           <div class="container1">
+
+                    <form class="formulario" action="{{ url('store-matricula')}}" method="POST">
+                    @csrf
+
+
+                            <div class="title" style="text-align: center">
+                                <h1>Matrícula em Concurso</h1>
+                            </div>
+
+                            <div class="fieldsetbotao">
+                                <img classe="img-responsive" src="../../../build/assets/imagens/logotube.png" alt="TubeConcuso Logo" >
+                            </div>
+
+                        <fieldset>
+                            <fieldset class="grupo">
+                                <div class="campo">
+                                    <label for="id_nomedoconcurso">Selecione um concurso</label>
+                                    <select name="id_nomedoconcurso" id="id_nomedoconcurso">
+                                        <option value="selecione um concurso"></option>
+                                        <?php
+                                            //criando uma conexão manual para testar slide
+                                            $host= "mysql";
+                                            $user= "root";
+                                            $pass = "root";
+                                            $dbname = "tubeconcurso";
+                                            $port = 3306;
+
+                                        try{
+
+                                            $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
+                                            } catch(PDOEXception $err){
+                                                echo "Erro de conexão".$err->getMessage();
+                                            }
+                                        ?>
+                                        <?php
+                                            $query = $conn->query("SELECT id, nomedocargo, id_nomedoconcurso FROM cargos order by nomedocargo asc");
+                                            $registros = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                                            foreach($registros as $option){
+                                        ?>
+                                            <option value="<?php echo $option['id'] ?>"><?php echo $option['nomedocargo'] ?></option>
+                                        <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                 <div class="campo">
+                                    <label for="email">Email</label>
+                                    <input type="text" id="email" name="email" style="width: 20em" required>
+                                </div>
+
+                                <div class="campo">
+                                    <label for="preco">Valor do Curso</label>
+                                    <input type="text" id="preco" name="preco" value="<?php echo  100.00; ?>" >
+                                </div>
+
+                                <div class="campo">
+                                    <label for="idade">Idade</label>
+                                    <input type="text" id="idade" name="idade" style="width: 10em" required >
+                                </div>
+
+                                <div class="campo">
+                                    <label for="telefone">Telefone</label>
+                                    <input type="telefone" id="telefone" name="telefone" style="width: 20em" required >
+                                </div>
+
+
+                            </fieldset>
+
+                            <fieldset class="group">
+                                <fieldset class="fieldsetBotao">
+                                <div class="campo" >
+                                    <input class="botao1" type="button" value="Voltar" onClick="history.go(-1)">
+                                    <button class="botao1" type="reset">Limpar</button>
+                                    <button class="botao1" type="submit">Cadastrar</button>
+                                </div>
+
+                                </fieldset>
+
+                            </fieldset>
+                        </fieldset>
+
+                    </form>
                 </div>
 
-                <div class="campo">
-                    <label for="idade">Idade</label>
-                    <input type="text" id="idade" name="idade" style="width: 10em" required >
-                </div>
 
-                 <div class="campo">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" style="width: 20em" required >
-                </div>
-
-        </fieldset>
-
-
-        </fieldset>
-
-        <fieldset class="group">
-        <fieldset class="fieldsetBotao">
-
-            <div class="campo" >
-                <button class="botao1" type="reset">Limpar</button>
-                <button class="botao1" type="submit">Cadastrar</button>
-            </div>
-
-        </fieldset>
-        </fieldset>
-        </fieldset>
-
-</form>
-
-
-    @elsecan('admin')
-
-        Área do Administrador
-
-
-@endcan
+        @endcan
 
 @endsection
 

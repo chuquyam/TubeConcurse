@@ -32,6 +32,14 @@
             </a>
         </li>
 
+         <li>
+            <a href="{{url('add-matricula')}}">
+                <i class="fa">
+                    <h4>Fazer matrícula</h4>
+                </i>
+            </a>
+        </li>
+
 
     </ul>
 
@@ -67,6 +75,15 @@
                 </i>
             </a>
         </li>
+
+         <li>
+            <a href="{{url('home-matricula')}}">
+                <i class="fa">
+                    <h4>Listar Matriculados</h4>
+                </i>
+            </a>
+        </li>
+
 
 
 

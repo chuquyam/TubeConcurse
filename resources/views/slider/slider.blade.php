@@ -24,6 +24,7 @@
                                     <div class="col-md-12">
                                         <div class="card-reader">
                                             <h4><a href="{{ url ('add-slider')}}" class="btn btn-primary float-right">Inserir  Slider</a></h4>
+                                                <input class="botao1" type="button" value="Voltar" onClick="history.go(-1)">
                                         </div>
                                             <div class="card-body">
                                                 {{-- Seu Slide --}}
@@ -38,7 +39,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($slider as $item)
+
+                                                    @foreach ($slider as $item)
                                                             <tr>
                                                                 <td>{{ $item -> id }}</td>
                                                                 <td>{{ $item -> nome }}</td>

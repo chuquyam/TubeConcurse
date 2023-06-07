@@ -125,12 +125,7 @@ fieldset.grupo .campo {
                 <label for="nomedadisciplina">Nome da Disciplina</label>
                 <input type="text" id="nomedadisciplina" name="nomedadisciplina" style="width: 20em" required >
             </div>
-            <div class="campo">
-                <label for="descricao">Descricão</label>
-                    <textarea id="descricao" name="descricao" rows="5" cols="50">
 
-                    </textarea>
-            </div>
 
             <div class="campo">
                 <label for="tipo">Tipo</label>
@@ -144,9 +139,17 @@ fieldset.grupo .campo {
         </fieldset>
 
         <fieldset class="grupo">
+
             <div class="campo">
-            <label for="id_nomedoconcurso">Selecione o concurso</label>
+                <label for="descricao">Descricão</label>
+                <textarea id="descricao" name="descricao" rows="5" cols="50">
+                </textarea>
+            </div>
+
+        <div class="campo">
+            <label for="id_nomedoconcurso">Selecione um concurso</label>
             <select name="id_nomedoconcurso" id="id_nomedoconcurso">
+                <option value="selecione um concurso"></option>
                 <?php
                     //criando uma conexão manual para testar slide
                     $host= "mysql";
@@ -168,39 +171,6 @@ fieldset.grupo .campo {
                 $query = $conn->query("SELECT id, nome FROM sliders order by nome asc");
                 $registros = $query->fetchAll(PDO::FETCH_ASSOC);
 
-                foreach($registros as $option){
-                ?>
-                    <option value="<?php echo $option['id'] ?>"><?php echo $option['nome'] ?></option>
-                <?php
-                 }
-                ?>
-            </select>
-
-            </div>
-
- <div class="campo">
-            <label for="">Selecione o cargo</label>
-            <select name="" id="">
-                <?php
-                    //criando uma conexão manual para testar slide
-                    $host= "mysql";
-                    $user= "root";
-                    $pass = "root";
-                    $dbname = "tubeconcurso";
-                    $port = 3306;
-
-                 try{
-
-                    $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
-                    } catch(PDOEXception $err){
-                        echo "Erro de conexão".$err->getMessage();
-                    }
-                ?>
-
-
-                <?php
-                $query = $conn->query("SELECT id, nome FROM cargos order by nome asc");
-                $registros = $query->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach($registros as $option){
                 ?>
@@ -212,6 +182,40 @@ fieldset.grupo .campo {
 
             </div>
 
+            <div class="campo">
+                    <label for="">Selecione o cargo</label>
+                    <select name="" id="">
+                        <option value="selecione um cargo"></option>
+
+                        <?php
+                            //criando uma conexão manual para testar slide
+                            $host= "mysql";
+                            $user= "root";
+                            $pass = "root";
+                            $dbname = "tubeconcurso";
+                            $port = 3306;
+
+                        try{
+
+                            $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
+                            } catch(PDOEXception $err){
+                                echo "Erro de conexão".$err->getMessage();
+                            }
+                        ?>
+
+
+                        <?php
+                        $query = $conn->query("SELECT id, nomedocargo FROM cargos order by nomedocargo asc");
+                        $registros = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach($registros as $option){
+                        ?>
+                            <option value="<?php echo $option['id'] ?>"><?php echo $option['nomedocargo'] ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+            </div>
 
 
         </fieldset>
@@ -220,6 +224,7 @@ fieldset.grupo .campo {
         <fieldset class="fieldsetBotao">
 
             <div class="campo" >
+                <input class="botao1" type="button" value="Voltar" onClick="history.go(-1)">
                 <button class="botao1" type="reset">Limpar</button>
                 <button class="botao1" type="submit">Cadastrar</button>
             </div>

@@ -24,9 +24,8 @@
                         @if (session('status'))
                             <h5 class="alert alert-success">{{ session('status')}}</h5>
 
-
-
                         @endif
+
                             <div class="card-body">
                                 <div class="col-md-12">
                                     <h4><a href="{{ url ('home-slider')}}" class="btn btn-danger float-right" >Voltar</a></h4>

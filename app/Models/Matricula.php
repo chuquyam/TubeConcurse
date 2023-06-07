@@ -12,11 +12,11 @@ class Matricula extends Model
 
     protected $fillable = [
         'id',
-        'id_codconcurso',
-        'id_nomedocargo',
-        'valordocurso',
-        'idade',
+        'id_nomedoconcurso',
         'email',
+        'preco',
+        'idade',
+        'telefone',
 
 
     ];

@@ -162,6 +162,7 @@ fieldset.grupo .campo {
         <fieldset class="fieldsetBotao">
 
             <div class="campo" >
+                <input class="botao1" type="button" value="Voltar" onClick="history.go(-1)">
                 <button class="botao1" type="reset">Limpar</button>
                 <button class="botao1" type="submit">Cadastrar</button>
             </div>

@@ -46,6 +46,7 @@
                         //contar a quantidade de registro recuperado do BD
                         $quantidade_slides = $resultado->rowCount();
                     ?>
+                        <a href="{{ url ('add-matricula')}}">
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
                                 <?php
@@ -85,13 +86,14 @@
 
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span class="visually-hidden">Anterior</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                <span class="visually-hidden">Próximo</span>
                             </button>
                         </div>
+                        </a>
 
                     @elsecan('admin')
                             <div class="card">
