@@ -69,7 +69,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md" style="background-color: #ddfcc5" navbar-static-top >
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     <img classe="img-responsive" src="../../../build/assets/imagens/logosistematubemini.png" text-align="center" alt="Logo">
 
                 </a>
